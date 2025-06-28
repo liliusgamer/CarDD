@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Quái Vật</title>
+    <style>
+        body { background: linear-gradient(120deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; }
+        .container { background: #fff; margin: 40px auto; padding: 32px 28px 24px 28px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); max-width: 500px; }
+        h2 { color: #f76b1c; margin-bottom: 18px; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 18px; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #f6d365; color: #fff; }
+        tr:last-child td { border-bottom: none; }
+        .actions { display: flex; gap: 8px; }
+        .btn { padding: 6px 14px; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+        .btn-edit { background: #f6d365; color: #fff; }
+        .btn-edit:hover { background: #fda085; }
+        .btn-delete { background: #ff4d4f; color: #fff; }
+        .btn-delete:hover { background: #d9363e; }
+        .btn-add { background: #2980ef; color: #fff; margin-bottom: 16px; display: inline-block; }
+        .btn-add:hover { background: #1a5fb4; }
+        .switch-btn {
+            background: #2980ef;
+            color: #fff;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(41,128,239,0.08);
+        }
+        .switch-btn:hover:not([style*='pointer-events: none']) {
+            background: #f76b1c;
+            color: #fff;
+            transform: translateY(-2px) scale(1.05);
+        }
+        .switch-btn.active {
+            background: #ff4d4f;
+            color: #fff;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; top: 24px; right: 32px; z-index: 10;">
+        <a class="btn btn-add" href="/">Trang chủ</a>
+    </div>
+    <div class="container">
+        <h2>Quản lý</h2>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 18px;">
+            <a class="btn btn-add switch-btn" href="/admin/accounts">Tài khoản</a>
+            <a class="btn btn-add switch-btn" href="/admin/players">Nhân vật</a>
+            <a class="btn btn-add switch-btn active" href="/admin/enemies" style="pointer-events: none; opacity: 0.7;">Quái vật</a>
+        </div>
+        <h2>Quản Lý Quái Vật</h2>
+        <a class="btn btn-add" href="/admin/enemies/add">+ Thêm quái vật</a>
+        <table>
+            <thead>
+                <tr><th>Tên quái vật</th><th>Level</th><th>Sát thương</th><th>Hành động</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="enemy : ${enemies}">
+                    <td th:text="${enemy.name}"></td>
+                    <td th:text="${enemy.level}"></td>
+                    <td th:text="${enemy.damage}"></td>
+                    <td class="actions">
+                        <a class="btn btn-edit" th:href="@{'/admin/enemies/edit'(id=${enemy.id})}">Sửa</a>
+                        <form th:action="@{'/admin/enemies/delete'}" method="post" style="display:inline;">
+                            <input type="hidden" name="id" th:value="${enemy.id}" />
+                            <button class="btn btn-delete" type="submit" onclick="return confirm('Bạn có chắc muốn xóa quái vật này?')">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> 

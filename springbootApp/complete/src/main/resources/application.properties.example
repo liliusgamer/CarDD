@@ -1,0 +1,16 @@
+# Database Configuration
+spring.datasource.url=jdbc:postgresql://your-host:your-port/your-database
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA Configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Server Configuration
+server.port=8080
+
+# Logging
+logging.level.com.example.servingwebcontent=DEBUG 

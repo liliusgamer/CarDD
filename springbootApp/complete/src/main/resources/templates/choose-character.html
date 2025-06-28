@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Nhân Vật</title>
+    <style>
+        body { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); min-height: 100vh; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; }
+        .container { background: #fff; margin: 40px auto; padding: 32px 28px 24px 28px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); max-width: 500px; }
+        h2 { color: #f5576c; margin-bottom: 18px; text-align: center; }
+        .characters { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+        .character-card { background: #f8f8f8; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 18px 16px; text-align: center; width: 140px; transition: box-shadow 0.2s; }
+        .character-card:hover { box-shadow: 0 4px 16px rgba(245,87,108,0.18); }
+        .avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid #f5576c; background: #fff; }
+        .name { font-weight: bold; color: #f5576c; margin-bottom: 4px; }
+        .level { color: #555; font-size: 0.98rem; margin-bottom: 10px; }
+        .choose-btn { background: #f5576c; color: #fff; border: none; border-radius: 8px; padding: 8px 0; width: 100%; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+        .choose-btn:hover { background: #f093fb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Chọn Nhân Vật</h2>
+        <div class="characters">
+            <div class="character-card" th:each="player : ${players}">
+                <img class="avatar" th:src="@{'/avatars/' + ${player.avatar}}" alt="avatar" />
+                <div class="name" th:text="${player.name}"></div>
+                <div class="level">Level: <span th:text="${player.level}"></span></div>
+                <form th:action="@{'/game'}" method="get">
+                    <input type="hidden" name="username" th:value="${username}" />
+                    <input type="hidden" name="playerId" th:value="${player.id}" />
+                    <button class="choose-btn" type="submit">Chọn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

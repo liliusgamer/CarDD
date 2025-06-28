@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Tài Khoản</title>
+    <style>
+        body { background: linear-gradient(120deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; }
+        .container { background: #fff; margin: 40px auto; padding: 32px 28px 24px 28px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); max-width: 400px; }
+        h2 { color: #f76b1c; margin-bottom: 18px; text-align: center; }
+        form { display: flex; flex-direction: column; gap: 14px; }
+        label { text-align: left; color: #333; font-weight: 500; }
+        input[type="text"], input[type="password"] { padding: 10px 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 1rem; outline: none; transition: border 0.2s; }
+        input[type="text"]:focus, input[type="password"]:focus { border: 1.5px solid #f76b1c; }
+        button[type="submit"] { background: linear-gradient(90deg, #f76b1c 0%, #fad961 100%); color: #fff; border: none; border-radius: 8px; padding: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 2px 8px rgba(247,107,28,0.08); transition: background 0.2s, transform 0.2s; }
+        button[type="submit"]:hover { background: linear-gradient(90deg, #fad961 0%, #f76b1c 100%); transform: translateY(-2px) scale(1.03); }
+        .back-link { display: block; margin-top: 18px; color: #f76b1c; text-decoration: none; font-weight: 500; text-align: center; transition: color 0.2s; }
+        .back-link:hover { color: #d35400; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thêm Tài Khoản Mới</h2>
+        <form action="/admin/accounts/add" method="post">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Thêm</button>
+        </form>
+        <a class="back-link" href="/admin/accounts">Quay lại danh sách</a>
+    </div>
+</body>
+</html> 

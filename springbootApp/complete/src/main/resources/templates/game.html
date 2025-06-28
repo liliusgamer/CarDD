@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi 2D</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .game-container {
+            background: #fff;
+            padding: 36px 32px 28px 32px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            color: #f5576c;
+            margin-bottom: 22px;
+            letter-spacing: 1px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 18px;
+        }
+        button {
+            background: linear-gradient(90deg, #f5576c 0%, #f093fb 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(245,87,108,0.08);
+            transition: background 0.2s, transform 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <div style="position: absolute; top: 24px; right: 32px; z-index: 10;">
+        <a href="/login" style="background: #eb0404; color: #fff; padding: 7px 18px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Đăng xuất</a>
+    </div>
+    <div class="game-container">
+        <h2>Chào mừng <span th:text="${username}"></span> đến với Lạc Trong Rừng Cấm</h2>
+        <div class="btn-group">
+            <input type="hidden" id="username-hidden" th:value="${username}" />
+            <button onclick="chooseCharacter()">Play Game</button>
+        </div>
+    </div>
+    <script>
+        function chooseCharacter() {
+            var username = document.getElementById('username-hidden').value;
+            window.location.href = '/choose-character?username=' + encodeURIComponent(username);
+        }
+    </script>
+</body>
+</html>
