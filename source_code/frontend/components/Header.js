@@ -2,11 +2,13 @@ import Link from "next/link";
 import Logo from "./Logo";
 import useAuth from "../hooks/useAuth";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Header({ isLoggedIn: isLoggedInProp, onLogout }) {
   const { isLoggedIn, user, logout } = useAuth();
   const [dropdown, setDropdown] = useState(false);
   const menuRef = useRef();
+  const router = useRouter();
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function Header({ isLoggedIn: isLoggedInProp, onLogout }) {
     setDropdown(false);
     if (onLogout) onLogout();
     else logout();
+    router.push("/login");
   };
 
   return (

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,4 +133,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),      # Token truy cập sống 7 ngày
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),    # Refresh token sống 30 ngày
+    "ROTATE_REFRESH_TOKENS": False,                  # Không tự động đổi refresh token
+    "BLACKLIST_AFTER_ROTATION": False,               # Không blacklist refresh token cũ
+    # ... các cấu hình khác nếu cần
 }

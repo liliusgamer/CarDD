@@ -56,7 +56,11 @@ export default function CreatePostPage() {
     setError("");
     setLoading(true);
     const token = localStorage.getItem("token");
-    if (!token) return;
+    if (!token) {
+      setError("Bạn cần đăng nhập lại để tạo bài viết.");
+      setLoading(false);
+      return;
+    }
     try {
       // Tạo tag mới nếu có
       let tagIds = [];
@@ -87,9 +91,18 @@ export default function CreatePostPage() {
           tag_ids: tagIds,
         }),
       });
+      if (res.status === 401) {
+        setError("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
+        setLoading(false);
+        return;
+      }
       if (res.ok) {
         const post = await res.json();
-        router.push(`/post/${post.id}`);
+        if (post.id) {
+          router.push(`/post/${post.id}`);
+        } else {
+          setError("Tạo bài viết thành công nhưng không lấy được ID bài viết.");
+        }
       } else {
         setError("Tạo bài viết thất bại!");
       }
