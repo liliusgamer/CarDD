@@ -204,6 +204,7 @@ Dự án sử dụng các model chính:
 - **Loading States**: UX tốt với loading indicators
 - **Search & Filter**: Tìm kiếm và lọc theo tag
 - **Pagination**: Phân trang cho danh sách bài viết
+<<<<<<< HEAD
 
 ## 🚀 Deployment
 
@@ -256,3 +257,5 @@ Nếu có câu hỏi hoặc góp ý, vui lòng tạo issue trên repository.
 ---
 
 **DevShare Lite** - Nơi chia sẻ kiến thức, hỏi đáp và kết nối cộng đồng IT! 🚀
+=======
+>>>>>>> b54d03e0cddb1d5b86902f00276bc5f930b7ed86
