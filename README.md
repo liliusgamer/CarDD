@@ -1,9 +1,9 @@
 # DevShare Lite
 
-## Thông tin tác giả
-**- Tên trường**: ĐH Phenikaa
-**- MSSV:** 23010541
-**- Họ tên:** Lê Phạm Thành Đạt
+## Thông tin tác giả  
+**- Tên trường**: ĐH Phenikaa  
+**- MSSV:** 23010541  
+**- Họ tên:** Lê Phạm Thành Đạt  
 
 ## 📋 Tổng quan dự án
 
