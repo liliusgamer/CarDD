@@ -1,5 +1,10 @@
 # DevShare Lite
 
+##Thông tin tác giả
+**Tên trường**: ĐH Phenikaa
+**MSSV:** 23010541
+**Họ tên:** Lê Phạm Thành Đạt
+
 ## 📋 Tổng quan dự án
 
 **DevShare Lite** là nền tảng chia sẻ kiến thức, hỏi đáp và kết nối cộng đồng IT. Sản phẩm tập trung vào trải nghiệm nhẹ, hiện đại, dễ sử dụng với các chức năng cốt lõi:
